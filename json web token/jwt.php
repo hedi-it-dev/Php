@@ -10,13 +10,12 @@
             ), '='
         );
     }
+
     function base64_URL_decode($arg) {
         $arg = str_pad($arg, strlen($arg) % 4, '=', STR_PAD_RIGHT);
         $arg = strtr($arg, '-_', '+/');
         return base64_decode($arg);
     }
-    
-
     
     function Create_JWT_Token($header, $payload) {
         global $secret_key;
@@ -47,4 +46,5 @@
         $expectedSignature = base64_URL_encode($expectedSignature);
         return hash_equals($signature, $expectedSignature);
     }
+
 ?>
